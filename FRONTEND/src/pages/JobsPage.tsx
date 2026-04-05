@@ -52,16 +52,18 @@ export default function JobsPage() {
     });
 
   return (
-    <div className="grid grid-flow-col">
+    <section className="  max-w-7xl mx-auto">
       <p className="text-bold text-black">JOB LIST</p>
-      <FiltersSidebar params={params} onChange={updateFilters} />
-      <div className="flex-1 p-4">
-        {loading && <p>Loading...</p>}
-        {error && <p>Error: {error}</p>}
-        {!loading && jobs.length === 0 && <p>No jobs found.</p>}
-        <JobsList jobs={jobs} />
-        <Pagination meta={meta} onChangePage={changePage} />
+      <div className="grid grid-flow-cols md:grid-cols-4 gap-4">
+        <FiltersSidebar params={params} onChange={updateFilters} />
+        <div className="grid grid-flow-cols">
+          {loading && <p>Loading...</p>}
+          {error && <p>Error: {error}</p>}
+          {!loading && jobs.length === 0 && <p>No jobs found.</p>}
+          <JobsList jobs={jobs} />
+          <Pagination meta={meta} onChangePage={changePage} />
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
