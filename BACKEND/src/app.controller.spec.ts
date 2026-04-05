@@ -1,22 +1,22 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppController } from './jobs/jobs.controller';
-import { AppService } from './jobs/jobs.service';
+import { JobsController } from './jobs/jobs.controller';
+import { JobsService } from './jobs/jobs.service';
 
-describe('AppController', () => {
-  let appController: AppController;
+describe('JobsController', () => {
+  let controller: JobsController;
 
   beforeEach(async () => {
-    const app: TestingModule = await Test.createTestingModule({
-      controllers: [AppController],
-      providers: [AppService],
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [JobsController],
+      providers: [JobsService],
     }).compile();
 
-    appController = app.get<AppController>(AppController);
+    controller = module.get<JobsController>(JobsController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
-    });
+  it('should return jobs list', () => {
+    const result = controller.getJobs({ page: 1, limit: 10 });
+    expect(result).toHaveProperty('data');
+    expect(result).toHaveProperty('meta');
   });
 });
