@@ -5,7 +5,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/jobs" element={<JobsPage />} />
+        <Route path="/" element={<JobsPage />} />
       </Routes>
     </BrowserRouter>
   );

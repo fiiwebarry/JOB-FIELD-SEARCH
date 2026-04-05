@@ -52,7 +52,8 @@ export default function JobsPage() {
     });
 
   return (
-    <div className="flex">
+    <div className="grid grid-flow-col">
+      <p className="text-bold text-black">JOB LIST</p>
       <FiltersSidebar params={params} onChange={updateFilters} />
       <div className="flex-1 p-4">
         {loading && <p>Loading...</p>}
