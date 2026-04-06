@@ -21,8 +21,10 @@ export default function JobsPage() {
   const params = {
     category: searchParams.get("category") || "",
     type: searchParams.get("type") || "",
+    workMode: searchParams.get("workMode") || "",
+    experience: searchParams.get("experience") || "",
     page: Number(searchParams.get("page") || 1),
-    limit: 10,
+    limit: 3,
   };
 
   useEffect(() => {
