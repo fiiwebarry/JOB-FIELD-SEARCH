@@ -4,6 +4,7 @@ import { fetchJobs, type Job } from "../api/jobsApi";
 import FiltersSidebar from "../components/FilterSiderbar";
 import JobsList from "../components/JobList";
 import Pagination from "../components/Pagination";
+import Layout from "../layout/layout";
 
 export default function JobsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -52,18 +53,15 @@ export default function JobsPage() {
     });
 
   return (
-    <section className="  max-w-7xl mx-auto">
-      <p className="text-bold text-black">JOB LIST</p>
-      <div className="grid grid-flow-cols md:grid-cols-4 gap-4">
-        <FiltersSidebar params={params} onChange={updateFilters} />
-        <div className="grid grid-flow-cols">
-          {loading && <p>Loading...</p>}
-          {error && <p>Error: {error}</p>}
-          {!loading && jobs.length === 0 && <p>No jobs found.</p>}
-          <JobsList jobs={jobs} />
-          <Pagination meta={meta} onChangePage={changePage} />
-        </div>
-      </div>
-    </section>
+    <Layout
+      sidebar={<FiltersSidebar params={params} onChange={updateFilters} />}
+    >
+      {loading && <p>Loading...</p>}
+      {error && <p className="text-red-500">Error: {error}</p>}
+      {!loading && jobs.length === 0 && <p>No jobs found.</p>}
+
+      <JobsList jobs={jobs} />
+      <Pagination meta={meta} onChangePage={changePage} />
+    </Layout>
   );
 }

@@ -3,6 +3,8 @@ export interface Job {
   title: string;
   category: string;
   type: string;
+  workMode: string;
+  experience: string;
 }
 
 export interface JobsResponse {

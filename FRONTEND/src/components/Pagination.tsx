@@ -6,7 +6,7 @@ interface Props {
 export default function Pagination({ meta, onChangePage }: Props) {
   const pages = Array.from({ length: meta.totalPages }, (_, i) => i + 1);
   return (
-    <div className="mt-4">
+    <div className="grid justify-items-center mt-4">
       {pages.map((p) => (
         <button
           key={p}
