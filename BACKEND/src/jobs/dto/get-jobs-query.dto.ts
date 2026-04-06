@@ -11,6 +11,14 @@ export class GetJobsQueryDto {
   type?: string;
 
   @IsOptional()
+  @IsString()
+  workMode?: string; // Remote, Hybrid, Onsite
+
+  @IsOptional()
+  @IsString()
+  experience?: string; // Entry-level, Mid-level, Senior, etc.
+
+  @IsOptional()
   @Type(() => Number)
   @IsNumber()
   @Min(1)
